@@ -6,7 +6,7 @@
 <jsp:useBean id="recentlyView" type="java.util.ArrayList" scope="request"/>
 <tags:master pageTitle="Product List">
 
-    <div class="carousel slide mx-auto w-auto" id="myCarousel" data-ride="carousel">
+    <div class="carousel slide " id="myCarousel" data-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
@@ -18,7 +18,7 @@
             </div>
             <div class="carousel-item ">
                 <img src="https://24shop.by/upload/iblock/adc/adc4337619b1d73cf15005d315e4886b.jpg" class="d-block w-100">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-lg-block">
                     <h2>Доставка по всей Беларуси</h2>
                     <p>Минск, Брест, Витебск, Могилев, Гомель, Гродно и ещё 106 городов и 5892 деревни.</p>
                 </div>
@@ -47,11 +47,11 @@
 
 <div class="container">
     <form class="row g-1 mt-4">
-        <div class="col-11">
-            <label for="inputQuery" class="visually-hidden">Query</label>
+        <div class="col-8 col-lg-11">
+<%--            <label for="inputQuery" class="visually-hidden">Query</label>--%>
             <input id="inputQuery" class="form-control" placeholder = "Что вы хотите найти?" name="query" value="${param.query}">
         </div>
-        <div class="col-1">
+        <div class="col-4 col-lg-1">
             <button class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -74,12 +74,13 @@
     </c:if>
     <div class="row mt-5">
             <c:forEach var="product" items="${products}" varStatus="status">
-                <div class="col-md-3 hover-overlay hover-zoom hover-shadow ripple">
+                <div class="col-7 col-lg-3">
                     <form method="post" action="${pageContext.servletContext.contextPath}/products">
-                        <div class="card text-center">
+                        <div class="card text-center hover-overlay hover-zoom hover-shadow ripple" style="width: 18rem;">
                             <a href="${pageContext.servletContext.contextPath}/products/${product.code}" style="text-decoration: none">
+                                <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><img class="p-2" src="${product.imageUrl}" style="max-width: 200px"></li>
+                                <li class="list-group-item"><img class="p-2" src="${product.imageUrl}" style="max-width: 200px" class="card-img-top"></li>
                                 <li class="list-group-item"> ${product.description}</li>
                                 <li class="list-group-item text-success font-weight-bold"><b>В наличии: ${product.stock}</b></li>
                                 <input type="hidden" name="productCode" value="${product.code}">
@@ -91,7 +92,8 @@
                                 </li>
 
                             </ul>
-                    </a>
+                                </div>
+                            </a>
                         <div class="btn-group">
                             <button type="submit" class="btn btn-primary">В корзину</button>
                             <button type="button" onclick="none" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Купить</button>
