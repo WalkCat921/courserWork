@@ -9,10 +9,6 @@
         <param-value>true</param-value>
     </context-param>
 
-<!--    <listener>-->
-<!--        <listener-class>com.egor.zhukovsky.phoneshop.web.SampleDataServletContextListener</listener-class>-->
-<!--    </listener>-->
-
     <servlet>
         <servlet-name>productList</servlet-name>
         <servlet-class>com.egor.zhukovsky.phoneshop.web.ProductListPageServlet</servlet-class>

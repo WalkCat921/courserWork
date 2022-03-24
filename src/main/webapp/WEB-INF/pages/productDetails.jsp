@@ -23,17 +23,15 @@
     <%--            </div>--%>
     <%--        </div>--%>
     <%--    </div>--%>
-    <div class="container text-center mt-5 justify-content-center">
+    <div class="container mt-5">
         <div class="row">
-            <div class="container ">
+            <div class="col">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Главная</a></li>
                     <li class="breadcrumb-item active">${product.description}</li>
                 </ol>
             </div>
         </div>
-    </div>
-    <div class="container">
         <div class="row">
         <div class="col-md-4">
             <img style="max-width: 350px" src="${product.imageUrl}">

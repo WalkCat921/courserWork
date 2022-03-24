@@ -5,28 +5,39 @@
 
 <jsp:useBean id="cart" type="com.egor.zhukovsky.phoneshop.model.cart.Cart" scope="request"/>
 <tags:master pageTitle="Cart">
-    <p id="product-description-text">
-        Ваша корзина
-    </p>
+    <div class="container text-center mt-5 justify-content-center">
+        <div class="row">
+            <div class="container ">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item active">Корзина</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <c:if test="${empty cart.itemList}">
+        <div class="container text-center">
+            <h4>
+                Корзина пуста!<a href="/">Добавить продукты?</a>
+            </h4>
+        </div>
+    </c:if>
     <c:if test="${not empty param.message}">
-        <p id="product-description-text" class="success">
-                ${param.message}
-        </p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>${param.message}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     </c:if>
     <c:if test="${not empty errors}">
-        <p class="error" id="product-description-text">
-            Ошибка обновления корзины!
-        </p>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Ошибка обновления корзины!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     </c:if>
-    <c:if test="${empty cart.itemList}">
-        <p id="product-description-text">
-            Корзина пуста!<a href="/">Добавить продукты?</a>
-        </p>
-    </c:if>
-<%--    <a href="">Minsk Kosmonavtov</a>--%>
+
     <c:if test="${not empty cart.itemList}">
         <form method="post" action="${pageContext.servletContext.contextPath}/cart">
-            <table id="details">
+            <table class="table table">
                 <thead>
                 <tr>
                     <td>Фото</td>
@@ -38,30 +49,28 @@
                 </thead>
                 <c:forEach var="item" items="${cart.itemList}" varStatus="status">
                     <tr>
-                        <td><img src="${item.product.imageUrl}" alt="phone_img"></td>
+                        <td><img src="${item.product.imageUrl}" alt="phone_img" style="height: 200px"></td>
                         <td>${item.product.description}</td>
                         <td>
                             <c:set var="error" value="${errors[item.product.code]}"/>
                             <input class="quantity" type="text" name="quantity" pattern="\d+"
                                    value="${not empty error ? quantity[item.product.code] : item.quantity}">
                             <c:if test="${not empty error}">
-                                <div class="error">
+                                <div class="text-danger">
+
                                         ${errors[item.product.code]}
                                 </div>
                             </c:if>
                             <c:if test="${empty error}">
-                                <div class="success">Обновлено успешно!</div>
+                                <div class="text-success">Обновлено успешно!</div>
                             </c:if>
                             <input type="hidden" name="productCode" value="${item.product.code}">
                         </td>
-                        <td><a href='#'
-                               onclick='javascript:window.open("${pageContext.servletContext.contextPath}/price-history/${item.product.code}",
-              "_blank", "scrollbars=0,resizable=0,height=600,width=450,top=250,left=780");' title='Pop Up'>
+                        <td>
                             <fmt:formatNumber value="${item.product.price * item.quantity}" type="currency"
                                               currencySymbol="${item.product.currency.symbol}"/>
-                        </a>
                         <td>
-                            <button form="deleteCartItem"
+                            <button class="btn btn-danger" form="deleteCartItem"
                                     formaction="${pageContext.servletContext.contextPath}/cart/deleteCartItem/${item.product.code}">
                                 Удалить
                             </button>
@@ -69,6 +78,7 @@
                     </tr>
                 </c:forEach>
                 <tr>
+                    <td></td>
                     <td>Total quantity:</td>
                     <td>${cart.totalQuantity}</td>
                     <td>Total cost:</td>
@@ -76,13 +86,13 @@
                                           currencySymbol="${cart.currency.symbol}"/></td>
                 </tr>
             </table>
-            <div class="button-update">
-                <button>Изменить</button>
+            <div class="d-flex justify-content-end btn-group" role="group">
+                <button class="btn btn-primary">Изменить</button>
+                <button form="overviewBtnForm" class="btn btn-success">Оформить заказ</button>
             </div>
         </form>
-        <div class="button-update">
-            <form action="${pageContext.servletContext.contextPath}/checkout">
-                <button>Проверить заказ</button>
+        <div>
+            <form id="overviewBtnForm" action="${pageContext.servletContext.contextPath}/checkout">
             </form>
         </div>
         <form method="post" id="deleteCartItem"></form>

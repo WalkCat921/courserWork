@@ -26,6 +26,7 @@ public class CheckoutPageServlet extends HttpServlet {
     private static final String FIRST_NAME_PARAM = "firstName";
     private static final String LAST_NAME_PARAM = "lastName";
     private static final String PHONE_PARAM = "phone";
+    private static final String CART_ATTRIBUTE = "cart";
     private static final String DELIVERY_DATE_PARAM = "deliveryDate";
     private static final String DELIVERY_ADDRESS_PARAM = "deliveryAddress";
     private static final String CACHE_HEADER = "Cache-Control";
@@ -54,6 +55,7 @@ public class CheckoutPageServlet extends HttpServlet {
             return;
         }
         setAttributeFromSession(request, ERROR_SESSION_ATTRIBUTE, ERROR_ATTRIBUTE);
+        request.setAttribute(CART_ATTRIBUTE, cart);
         request.setAttribute(ORDER_ATTRIBUTE, orderService.getOrder(cart));
         response.setHeader(CACHE_HEADER, CACHE_HEADER_PARAMETERS);
         request.setAttribute(PAYMENT_METHOD_PARAM, orderService.getPaymentMethods());

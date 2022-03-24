@@ -41,10 +41,6 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-
-
-
 <div class="container">
     <form class="row g-1 mt-4">
         <div class="col-8 col-lg-11">
@@ -72,7 +68,7 @@
             <p class="error">${param.message}</p>
         </div>
     </c:if>
-    <div class="row mt-5">
+    <div class="row mt-5" >
             <c:forEach var="product" items="${products}" varStatus="status">
                 <div class="col-7 col-lg-3">
                     <form method="post" action="${pageContext.servletContext.contextPath}/products">

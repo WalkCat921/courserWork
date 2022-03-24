@@ -2,6 +2,7 @@
 <%@ attribute name="pageTitle" required="true" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/images/shop-icon.png"/>
     <title>${pageTitle}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +55,7 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container pt-5">
         <jsp:doBody/>
 </div>
 <!-- Footer -->
