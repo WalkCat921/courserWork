@@ -11,64 +11,55 @@
 <jsp:useBean id="currentDate" class="java.util.Date"/>
 
 <c:if test="${type.equals('text')}">
-    <tr>
-        <td>${lable} <span style="color:red">*</span></td>
-        <td>
             <c:set var="error" value="${errors[name]}"/>
-            <input type="${type}" name="${name}" minlength="2"
+            <input id="${name}" class="form-control" type="${type}" name="${name}" minlength="2"
                     <c:if test="${name.equals('deliveryAddress')}">
                         placeholder="st. Example 15-3-2, City"
                     </c:if>
                    value="${not empty errors ? param[name] : order[name]}"/>
+            <label class="form-label" for="${name}"> ${lable} <span style="color:red">*</span></label>
             <c:if test="${not empty error}">
                 <div class="error">
                         ${error}
                 </div>
             </c:if>
-        </td>
-    </tr>
 </c:if>
 <c:if test="${type.equals('date')}">
-    <tr>
-        <td>${lable} <span style="color:red">*</span></td>
-        <td>
             <c:set var="error" value="${errors[name]}"/>
-            <input type="date"
+    <input type="date"
+           class="form-control"
                    min="<fmt:formatDate value="${currentDate}" pattern='yyyy-MM-dd' />"
                    max="<%=LocalDate.now().plusWeeks(2)%>"
                    name="${name}"
                    value="${not empty errors ? param[name] : order[name]}"/>
+    <label class="form-label" for="${name}">${lable}
+        <span style="color:red">*</span>
+    </label>
             <c:if test="${not empty error}">
                 <div class="error">
                         ${error}
                 </div>
             </c:if>
-        </td>
-    </tr>
 </c:if>
 <c:if test="${type.equals('tel')}">
-    <tr>
-        <td>${lable} <span style="color:red">*</span></td>
-        <td>
             <c:set var="error" value="${errors[name]}"/>
-            <input type="tel"
+            <input type="text"
                    pattern="375[0-9]{9}"
+                   class="form-control"
                    placeholder="375xxxxxxxxx"
                    name="${name}"
                    value="${not empty errors ? param[name] : order[name]}"/>
+    <label class="form-label" for="${name}">${lable}
+        <span style="color:red">*</span>
+    </label>
             <c:if test="${not empty error}">
                 <div class="error">
                         ${error}
                 </div>
             </c:if>
-        </td>
-    </tr>
 </c:if>
 <c:if test="${name.equals('paymentMethod')}">
-    <tr>
-        <td>${lable} <span style="color:red">*</span></td>
-        <td>
-            <select name="${name}">
+            <select name="${name}" class="form-select">
                 <c:forEach var="paymentM" items="${paymentMethod}">
                     <option>${paymentM}</option>
                 </c:forEach>
@@ -79,6 +70,4 @@
                         ${error}
                 </div>
             </c:if>
-        </td>
-    </tr>
 </c:if>

@@ -16,13 +16,6 @@
     <%--        </p>--%>
     <%--    </c:if>--%>
 
-
-    <%--    <div class="container">--%>
-    <%--        <div class="row">--%>
-    <%--            <div class="col-3">--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
-    <%--    </div>--%>
     <div class="container mt-5">
         <div class="row">
             <div class="col">
