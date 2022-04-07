@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class AbstractDao<T extends Item> implements DAO<T> {
 
     protected static final Object LOCK = new Object();
-    protected  Session sessionDB;
+    protected Session sessionDB;
 
     protected AbstractDao() {
     }
@@ -37,7 +37,7 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
         synchronized (LOCK) {
             try{
                 sessionDB.beginTransaction();
-                return sessionDB.createQuery("FROM Product ").list();
+                return sessionDB.createQuery("FROM Product").list();
             } finally {
                 sessionDB.getTransaction().commit();
                 sessionDB.close();
@@ -53,7 +53,22 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
                 sessionDB.beginTransaction();
                 sessionDB.save(object);
             }finally {
-                sessionDB.flush();
+//                sessionDB.flush();
+                sessionDB.getTransaction().commit();
+                sessionDB.close();
+            }
+        }
+    }
+
+    @Override
+    public void update(@NonNull T object) {
+        sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
+        synchronized (LOCK) {
+            try{
+                sessionDB.beginTransaction();
+                sessionDB.update(object);
+            }finally {
+//                sessionDB.flush();
                 sessionDB.getTransaction().commit();
                 sessionDB.close();
             }

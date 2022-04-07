@@ -1,4 +1,4 @@
-<%@ tag import="java.time.LocalDate" %>
+﻿<%@ tag import="java.time.LocalDate" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ tag trimDirectiveWhitespaces="true" %>
@@ -7,6 +7,7 @@
 <%@ attribute name="lable" required="true" %>
 <%@ attribute name="type" required="false" %>
 <%@ attribute name="paymentMethod" required="false" type="java.util.List" %>
+<%@ attribute name="shopAddresses" required="false" type="java.util.List" %>
 <%@ attribute name="errors" required="true" type="java.util.Map" %>
 <jsp:useBean id="currentDate" class="java.util.Date"/>
 
@@ -18,10 +19,8 @@
                     </c:if>
                    value="${not empty errors ? param[name] : order[name]}"/>
             <label class="form-label" for="${name}"> ${lable} <span style="color:red">*</span></label>
-            <c:if test="${not empty error}">
-                <div class="error">
-                        ${error}
-                </div>
+    <c:if test="${not empty error}">
+        <div class="text-danger">${error}</div>
             </c:if>
 </c:if>
 <c:if test="${type.equals('date')}">
@@ -36,9 +35,7 @@
         <span style="color:red">*</span>
     </label>
             <c:if test="${not empty error}">
-                <div class="error">
-                        ${error}
-                </div>
+                <div class="text-danger">${error}</div>
             </c:if>
 </c:if>
 <c:if test="${type.equals('tel')}">
@@ -53,9 +50,7 @@
         <span style="color:red">*</span>
     </label>
             <c:if test="${not empty error}">
-                <div class="error">
-                        ${error}
-                </div>
+                <div class="text-danger">${error}</div>
             </c:if>
 </c:if>
 <c:if test="${name.equals('paymentMethod')}">
@@ -66,8 +61,20 @@
             </select>
             <c:set var="error" value="${errors[name]}"/>
             <c:if test="${not empty error}">
-                <div class="error">
-                        ${error}
-                </div>
+                <div class="text-danger">${error}</div>
             </c:if>
+</c:if>
+<c:if test="${name.equals('shopAdress')}">
+    <label for="${name}">Выберите адрес магазина</label>
+    <select name="${name}" id="addressSelect" class="form-select">
+        <option value="test">test</option>
+        <c:forEach var="shopA" items="${shopAddresses}">
+            <option value="${shopA.id}">${shopA.address}</option>
+        </c:forEach>
+    </select>
+    <c:set var="error" value="${errors[name]}"/>
+    <c:if test="${not empty error}">
+        <div class="text-danger">${error}</div>
+    </c:if>
+
 </c:if>

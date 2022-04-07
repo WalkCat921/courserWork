@@ -19,7 +19,16 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">mtfrbeaavozppl</property>
         <property name="connection.password">d3226877d783ab4087b2f89974fc54fce779624c2f9d075edd5ccbb3c518a0ca</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
         <mapping class="com.egor.zhukovsky.phoneshop.model.product.Product"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.shop.Shop"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.order.Order"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.statistic.VisitorsStatistic"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.statistic.SalesStatistic"/>
+<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.MainСharacteristics"/>-->
+<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.CameraСharacteristics"/>-->
+<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.OtherСharacteristics"/>-->
     </session-factory>
 </hibernate-configuration>
 

@@ -42,10 +42,13 @@
                     <tags:orderFormRow type="tel" name="phone" order="${order}" lable="Телефон" errors="${errors}"/>
                 </div>
                 <div class="form-outline mb-4">
-                    <tags:orderFormRow type="date" name="deliveryDate" order="${order}" lable="Дата доставки" errors="${errors}"/>
+                    <tags:orderFormRow type="date"  name="deliveryDate" order="${order}" lable="Дата доставки" errors="${errors}"/>
                 </div>
                 <div class="form-outline mb-4">
                     <tags:orderFormRow type="text" name="deliveryAddress" order="${order}" lable="Адрес доставки" errors="${errors}"/>
+                </div>
+                <div class="form-outline mb-4">
+                    <tags:orderFormRow name="shopAdress" order="${order}" lable="Адреса магазинов" errors="${errors}" shopAddresses="${shopAddresses}"/>
                 </div>
                 <div class="form-outline mb-4">
                     <tags:orderFormRow name="paymentMethod" order="${order}" lable="Способ оплаты" errors="${errors}" paymentMethod="${paymentMethod}"/>
@@ -53,6 +56,7 @@
                 <div>
                     <button class="btn btn-success">Подтвердить заказ</button>
                 </div>
+
             </form>
         </div>
         <div class="col-md-7">
@@ -83,7 +87,20 @@
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
+<%--    <div class="row" id="map">--%>
+<%--        <div class="col-md-12">--%>
+<%--            <div class="form-outline mb-4">--%>
+<%--                <iframe src="http://map.project-osrm.org/?z=12&center=53.902821%2C27.603149&hl=ru&alt=0&srv=1"--%>
+<%--                        width="1200"--%>
+<%--                        height="500"--%>
+<%--                        frameborder="0"--%>
+<%--                        style="border:0; width: 100%;" allowfullscreen="true"></iframe>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+    <div id="map" style="height: 600px"></div>
+<%--    <iframe src="https://map.project-osrm.org/?z=7&center=50.004209%2C11.997070&hl=en&alt=0&srv=1" width="100%" height="400px" frameborder="0"></iframe>--%>
     <form method="post" id="deleteCartItem"></form>
 </tags:master>

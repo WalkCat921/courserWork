@@ -2,15 +2,27 @@ package com.egor.zhukovsky.phoneshop.model.order;
 
 import com.egor.zhukovsky.phoneshop.model.cart.Cart;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
 
+@Entity
+@Table(name = "orders")
 public class Order extends Cart {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String secureId;
     private BigDecimal subtotal;
     private BigDecimal deliveryCost;
+    private BigDecimal total;
     private Currency currency = Currency.getInstance("USD");
 
     private String firstName;
@@ -104,12 +116,22 @@ public class Order extends Cart {
         this.secureId = secureId;
     }
 
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
+                ", secureId='" + secureId + '\'' +
                 ", subtotal=" + subtotal +
                 ", deliveryCost=" + deliveryCost +
+                ", total=" + total +
                 ", currency=" + currency +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

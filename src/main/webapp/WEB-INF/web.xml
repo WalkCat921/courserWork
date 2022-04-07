@@ -9,6 +9,15 @@
         <param-value>true</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>login</param-name>
+        <param-value>admin</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>secretPass</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>productList</servlet-name>
         <servlet-class>com.egor.zhukovsky.phoneshop.web.ProductListPageServlet</servlet-class>
@@ -100,22 +109,78 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>logoutAdmin</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.LogoutServlet</servlet-class>
+        <security-role-ref>
+            <role-name>admin</role-name>
+            <role-link>admin</role-link>
+        </security-role-ref>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutAdmin</servlet-name>
+        <url-pattern>/admin/menu/logout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>chartPage</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.ChartsPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>chartPage</servlet-name>
+        <url-pattern>/admin/menu/charts</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>adminMenu</servlet-name>
         <servlet-class>com.egor.zhukovsky.phoneshop.web.AdminMenuPageServlet</servlet-class>
+        <security-role-ref>
+            <role-name>admin</role-name>
+            <role-link>admin</role-link>
+        </security-role-ref>
     </servlet>
     <servlet-mapping>
         <servlet-name>adminMenu</servlet-name>
         <url-pattern>/admin/menu</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>adminTables</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.TablesPageServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>adminTables</servlet-name>
+        <url-pattern>/admin/menu/tables</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminAddProduct</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.AddProductPageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminAddProduct</servlet-name>
+        <url-pattern>/admin/menu/tables/add</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>dosFilter</filter-name>
-        <filter-class>com.egor.zhukovsky.phoneshop.web.DosFilter</filter-class>
+        <filter-class>com.egor.zhukovsky.phoneshop.web.filters.DosFilter</filter-class>
     </filter>
 
     <filter-mapping>
         <filter-name>dosFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>visitorsCountFilter</filter-name>
+        <filter-class>com.egor.zhukovsky.phoneshop.web.filters.VisitorCountFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>visitorsCountFilter</filter-name>
+        <url-pattern>/products</url-pattern>
     </filter-mapping>
 
     <error-page>
@@ -124,19 +189,21 @@
     </error-page>
 
     <error-page>
-        <location>/WEB-INF/pages/error500.jsp</location>
+        <location>/WEB-INF/startbootstrap-sb-admin-gh-pages/html/500.html</location>
         <error-code>500</error-code>
-        <error-code>404</error-code>
     </error-page>
 
 
     <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>This is real name</realm-name>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/WEB-INF/startbootstrap-sb-admin-gh-pages/html/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/startbootstrap-sb-admin-gh-pages/html/401.jsp</form-error-page>
+        </form-login-config>
     </login-config>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>SecureJsp</web-resource-name>
+            <web-resource-name>AdminPanel</web-resource-name>
             <url-pattern>/admin/menu</url-pattern>
         </web-resource-collection>
         <auth-constraint>

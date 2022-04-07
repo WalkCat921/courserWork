@@ -112,26 +112,26 @@
     <div>
         <tags:recentlyView recentlyView="${recentlyView}"/>
     </div>
-</tags:master>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Покупка в один клик</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formPhone" action="/" class="was-validated">
-                <label for="phoneInput">Введите номер вашего телефона</label>
-                <input type="tel" id="phoneInput" placeholder="+375 (xx) xxxxxxx" pattern="^\+375 \((17|29|33|44)\) [0-9]{7}$" required>
-                <p>Оператор свяжется с Вами для оформления заказа</p>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                <button form="formPhone" formaction="/" type="submit" class="btn btn-primary" >Купить</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Покупка в один клик</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formPhone" action="/" class="was-validated">
+                        <label for="phoneInput">Введите номер вашего телефона</label>
+                        <input type="tel" id="phoneInput" placeholder="+375 (xx) xxxxxxx" pattern="^\+375 \((17|29|33|44)\) [0-9]{7}$" required>
+                        <p>Оператор свяжется с Вами для оформления заказа</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button form="formPhone" formaction="/" type="submit" class="btn btn-primary" >Купить</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</tags:master>
+

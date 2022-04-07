@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
             order.setItemList(SerializationUtils.clone((ArrayList<CartItem>) cart.getItemList()));
             order.setSubtotal(cart.getTotalCost());
             order.setDeliveryCost(calculateDeliveryCost());
-            order.setTotalCost(order.getSubtotal().add(order.getDeliveryCost()));
+            order.setTotal(order.getSubtotal().add(order.getDeliveryCost()));
 
             return order;
         }

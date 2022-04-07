@@ -1,8 +1,10 @@
 package com.egor.zhukovsky.phoneshop.dao.impl;
 
+import com.egor.zhukovsky.phoneshop.config.HibernateSessionFactory;
 import com.egor.zhukovsky.phoneshop.dao.OrderDao;
 import com.egor.zhukovsky.phoneshop.model.order.Order;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ArrayListOrderDao extends AbstractDao<Order> implements OrderDao {
@@ -25,10 +27,24 @@ public class ArrayListOrderDao extends AbstractDao<Order> implements OrderDao {
     @Override
     public Order getBySecureId(String secureId) throws NoSuchElementException, NullPointerException {
         synchronized (LOCK) {
-            return super.findAll().stream()
+            return findAllOrder().stream()
                     .filter(order -> secureId.equals(order.getSecureId()))
                     .findAny()
                     .orElseThrow(NoSuchElementException::new);
+        }
+    }
+
+    @Override
+    public List<Order> findAllOrder() {
+        sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
+        synchronized (LOCK) {
+            try{
+                sessionDB.beginTransaction();
+                return sessionDB.createQuery("FROM Order ").list();
+            } finally {
+                sessionDB.getTransaction().commit();
+                sessionDB.close();
+            }
         }
     }
 }

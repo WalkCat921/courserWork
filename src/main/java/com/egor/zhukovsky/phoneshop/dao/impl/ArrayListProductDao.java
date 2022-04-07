@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class ArrayListProductDao extends AbstractDao<Product> implements ProductDao {
 
     private static volatile ProductDao instance;
-    protected Session sessionDB;
 
     private ArrayListProductDao() {
     }
@@ -67,6 +66,7 @@ public class ArrayListProductDao extends AbstractDao<Product> implements Product
             findAll().stream().forEach(product -> {
                 if (cartItem.getProduct().getCode().equals(product.getCode())) {
                     product.setStock(product.getStock() - cartItem.getQuantity());
+                    super.update(product);
                 }
             });
         });

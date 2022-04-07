@@ -9,6 +9,8 @@ public interface DAO<T extends Item> {
 
     List<T> findAll();
 
+    void update(T object);
+
     void save(T object);
 
     void delete(Long id);

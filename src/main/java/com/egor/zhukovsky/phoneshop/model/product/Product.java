@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.io.Serializable;
@@ -41,10 +42,31 @@ public class Product extends Item implements Serializable {
     private int stock;
     @Column(name = "imageUrl")
     private String imageUrl;
+//    @OneToOne
+@Transient
+    private MainСharacteristics mainСharacteristics;
+//    @OneToOne
+@Transient
+    private CameraСharacteristics cameraСharacteristics;
+//    @OneToOne
+@Transient
+    private OtherСharacteristics otherСharacteristics;
     @Transient
     private PriceHistory priceHistory;
 
     public Product() {
+    }
+
+    public Product(String code, String description, BigDecimal price, Currency currency, int stock, String imageUrl, MainСharacteristics mainСharacteristics, CameraСharacteristics cameraСharacteristics, OtherСharacteristics otherСharacteristics) {
+        this.code = code;
+        this.description = description;
+        this.price = price;
+        this.currency = currency;
+        this.stock = stock;
+        this.imageUrl = imageUrl;
+        this.mainСharacteristics = mainСharacteristics;
+        this.cameraСharacteristics = cameraСharacteristics;
+        this.otherСharacteristics = otherСharacteristics;
     }
 
     public Product(Long id, String code, String description, BigDecimal price, Currency currency, int stock, String imageUrl) {
@@ -141,11 +163,37 @@ public class Product extends Item implements Serializable {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
     public PriceHistory getPriceHistory() {
         return priceHistory;
     }
+
     public void setPriceHistory(PriceHistory priceHistory) {
         this.priceHistory = priceHistory;
+    }
+
+    public MainСharacteristics getMainСharacteristics() {
+        return mainСharacteristics;
+    }
+
+    public void setMainСharacteristics(MainСharacteristics mainСharacteristics) {
+        this.mainСharacteristics = mainСharacteristics;
+    }
+
+    public CameraСharacteristics getCameraСharacteristics() {
+        return cameraСharacteristics;
+    }
+
+    public void setCameraСharacteristics(CameraСharacteristics cameraСharacteristics) {
+        this.cameraСharacteristics = cameraСharacteristics;
+    }
+
+    public OtherСharacteristics getOtherСharacteristics() {
+        return otherСharacteristics;
+    }
+
+    public void setOtherСharacteristics(OtherСharacteristics otherСharacteristics) {
+        this.otherСharacteristics = otherСharacteristics;
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.egor.zhukovsky.phoneshop.model.cart;
 
 import com.egor.zhukovsky.phoneshop.model.entity.Item;
 
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;

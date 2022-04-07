@@ -1,6 +1,7 @@
 package com.egor.zhukovsky.phoneshop.web;
 
 import com.egor.zhukovsky.phoneshop.security.DosProtectionService;
+import com.egor.zhukovsky.phoneshop.web.filters.DosFilter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
