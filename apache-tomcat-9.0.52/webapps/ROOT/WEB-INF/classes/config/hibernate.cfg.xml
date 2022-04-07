@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--<hibernate-configuration>-->
+<!--    <session-factory>-->
+<!--        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+<!--        <property name="connection.url">jdbc:mysql://localhost:3306/phoneshop?serverTimezone=UTC</property>-->
+<!--        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>-->
+<!--        <property name="connection.username">mysql</property>-->
+<!--        <property name="connection.password"></property>-->
+<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.Product"/>-->
+<!--    </session-factory>-->
+<!--</hibernate-configuration>-->
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
+        <property name="connection.url">jdbc:postgresql://ec2-34-253-29-48.eu-west-1.compute.amazonaws.com:5432/demia3lvn2e6co?sslmode=require</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.username">mtfrbeaavozppl</property>
+        <property name="connection.password">d3226877d783ab4087b2f89974fc54fce779624c2f9d075edd5ccbb3c518a0ca</property>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.product.Product"/>
+    </session-factory>
+</hibernate-configuration>
+
