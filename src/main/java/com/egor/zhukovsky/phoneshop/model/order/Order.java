@@ -9,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
 
 @Entity
 @Table(name = "orders")
-public class Order extends Cart {
+public class Order extends Cart implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -123,6 +124,8 @@ public class Order extends Cart {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
+
+
 
     @Override
     public String toString() {

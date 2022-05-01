@@ -17,12 +17,12 @@
         </div>
     </div>
     <c:if test="${not empty param.message}">
-        <p id="product-description-text" class="success">
+        <p class="alert alert-danger" role="alert">
             ${param.message}
         </p>
     </c:if>
     <c:if test="${not empty errors}">
-        <p class="error" id="product-description-text">
+        <p class="alert alert-danger" role="alert">
            Что-то пошло не так!
         </p>
     </c:if>
@@ -47,9 +47,9 @@
                 <div class="form-outline mb-4">
                     <tags:orderFormRow type="text" name="deliveryAddress" order="${order}" lable="Адрес доставки" errors="${errors}"/>
                 </div>
-                <div class="form-outline mb-4">
-                    <tags:orderFormRow name="shopAdress" order="${order}" lable="Адреса магазинов" errors="${errors}" shopAddresses="${shopAddresses}"/>
-                </div>
+<%--                <div class="form-outline mb-4">--%>
+<%--                    <tags:orderFormRow name="shopAdress" order="${order}" lable="Адреса магазинов" errors="${errors}" shopAddresses="${shopAddresses}"/>--%>
+<%--                </div>--%>
                 <div class="form-outline mb-4">
                     <tags:orderFormRow name="paymentMethod" order="${order}" lable="Способ оплаты" errors="${errors}" paymentMethod="${paymentMethod}"/>
                 </div>
@@ -80,7 +80,7 @@
                                                                   currencySymbol="${order.currency.symbol}"/></li>
                     <li class="list-group-item text-end">Стоимость доставки: <fmt:formatNumber value="${order.deliveryCost}" type="currency"
                                                              currencySymbol="${order.currency.symbol}"/></li>
-                    <li class="list-group-item text-end">Итоговая стоимость: <fmt:formatNumber value="${order.totalCost}" type="currency"
+                    <li class="list-group-item text-end">Итоговая стоимость: <fmt:formatNumber value="${order.total}" type="currency"
                                                              currencySymbol="${order.currency.symbol}"/></li>
                 </ul>
                     </div>
@@ -103,4 +103,11 @@
     <div id="map" style="height: 600px"></div>
 <%--    <iframe src="https://map.project-osrm.org/?z=7&center=50.004209%2C11.997070&hl=en&alt=0&srv=1" width="100%" height="400px" frameborder="0"></iframe>--%>
     <form method="post" id="deleteCartItem"></form>
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 2000);
+    </script>
 </tags:master>

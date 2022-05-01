@@ -1,10 +1,8 @@
 package com.egor.zhukovsky.phoneshop.model.product;
 
 import com.egor.zhukovsky.phoneshop.model.entity.Item;
-import com.egor.zhukovsky.phoneshop.model.price.PriceHistory;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Currency;
@@ -42,32 +39,27 @@ public class Product extends Item implements Serializable {
     private int stock;
     @Column(name = "imageUrl")
     private String imageUrl;
-//    @OneToOne
-//@Transient
-//    private MainСharacteristics mainСharacteristics;
-//    @OneToOne
-//@Transient
-//    private CameraСharacteristics cameraСharacteristics;
-//    @OneToOne
-//@Transient
-//    private OtherСharacteristics otherСharacteristics;
-    @Transient
-    private PriceHistory priceHistory;
+    @OneToOne(cascade= CascadeType.ALL)
+    private MainСharacteristics mainСharacteristics;
+    @OneToOne(cascade= CascadeType.ALL)
+    private CameraСharacteristics cameraСharacteristics;
+    @OneToOne(cascade= CascadeType.ALL)
+    private OtherСharacteristics otherСharacteristics;
 
     public Product() {
     }
 
-//    public Product(String code, String description, BigDecimal price, Currency currency, int stock, String imageUrl, MainСharacteristics mainСharacteristics, CameraСharacteristics cameraСharacteristics, OtherСharacteristics otherСharacteristics) {
-//        this.code = code;
-//        this.description = description;
-//        this.price = price;
-//        this.currency = currency;
-//        this.stock = stock;
-//        this.imageUrl = imageUrl;
-//        this.mainСharacteristics = mainСharacteristics;
-//        this.cameraСharacteristics = cameraСharacteristics;
-//        this.otherСharacteristics = otherСharacteristics;
-//    }
+    public Product(String code, String description, BigDecimal price, Currency currency, int stock, String imageUrl, MainСharacteristics mainСharacteristics, CameraСharacteristics cameraСharacteristics, OtherСharacteristics otherСharacteristics) {
+        this.code = code;
+        this.description = description;
+        this.price = price;
+        this.currency = currency;
+        this.stock = stock;
+        this.imageUrl = imageUrl;
+        this.mainСharacteristics = mainСharacteristics;
+        this.cameraСharacteristics = cameraСharacteristics;
+        this.otherСharacteristics = otherСharacteristics;
+    }
 
     public Product(Long id, String code, String description, BigDecimal price, Currency currency, int stock, String imageUrl) {
         this.id = id;
@@ -97,16 +89,6 @@ public class Product extends Item implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public Product(String code, String description, BigDecimal price, Currency currency, int stock, String imageUrl, PriceHistory priceHistory) {
-        ObjectMapper mapper = JsonMapper.builder().findAndAddModules().build();
-        this.code = code;
-        this.description = description;
-        this.price = price;
-        this.currency = Currency.getInstance(String.valueOf(currency));
-        this.stock = stock;
-        this.imageUrl = imageUrl;
-        this.priceHistory = priceHistory;
-    }
 
     public Long getId() {
         return id;
@@ -164,50 +146,45 @@ public class Product extends Item implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public PriceHistory getPriceHistory() {
-        return priceHistory;
+    public MainСharacteristics getMainСharacteristics() {
+        return mainСharacteristics;
     }
 
-    public void setPriceHistory(PriceHistory priceHistory) {
-        this.priceHistory = priceHistory;
+    public void setMainСharacteristics(MainСharacteristics mainСharacteristics) {
+        this.mainСharacteristics = mainСharacteristics;
     }
 
-//    public MainСharacteristics getMainСharacteristics() {
-//        return mainСharacteristics;
-//    }
-//
-//    public void setMainСharacteristics(MainСharacteristics mainСharacteristics) {
-//        this.mainСharacteristics = mainСharacteristics;
-//    }
-//
-//    public CameraСharacteristics getCameraСharacteristics() {
-//        return cameraСharacteristics;
-//    }
-//
-//    public void setCameraСharacteristics(CameraСharacteristics cameraСharacteristics) {
-//        this.cameraСharacteristics = cameraСharacteristics;
-//    }
-//
-//    public OtherСharacteristics getOtherСharacteristics() {
-//        return otherСharacteristics;
-//    }
-//
-//    public void setOtherСharacteristics(OtherСharacteristics otherСharacteristics) {
-//        this.otherСharacteristics = otherСharacteristics;
-//    }
+    public CameraСharacteristics getCameraСharacteristics() {
+        return cameraСharacteristics;
+    }
+
+    public void setCameraСharacteristics(CameraСharacteristics cameraСharacteristics) {
+        this.cameraСharacteristics = cameraСharacteristics;
+    }
+
+    public OtherСharacteristics getOtherСharacteristics() {
+        return otherСharacteristics;
+    }
+
+    public void setOtherСharacteristics(OtherСharacteristics otherСharacteristics) {
+        this.otherСharacteristics = otherСharacteristics;
+    }
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", currency=" + currency +
-                ", stock=" + stock +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", priceHistory=" + priceHistory +
-                '}';
+        final StringBuffer sb = new StringBuffer("Product{");
+        sb.append("id=").append(id);
+        sb.append(", code='").append(code).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", price=").append(price);
+        sb.append(", currency=").append(currency);
+        sb.append(", stock=").append(stock);
+        sb.append(", imageUrl='").append(imageUrl).append('\'');
+        sb.append(", mainСharacteristics=").append(mainСharacteristics);
+        sb.append(", cameraСharacteristics=").append(cameraСharacteristics);
+        sb.append(", otherСharacteristics=").append(otherСharacteristics);
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override
@@ -221,12 +198,11 @@ public class Product extends Item implements Serializable {
                 && Objects.equals(description, product.description)
                 && Objects.equals(price, product.price)
                 && Objects.equals(currency, product.currency)
-                && Objects.equals(imageUrl, product.imageUrl)
-                && Objects.equals(priceHistory, product.priceHistory);
+                && Objects.equals(imageUrl, product.imageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, code, description, price, currency, stock, imageUrl, priceHistory);
+        return Objects.hash(id, code, description, price, currency, stock, imageUrl);
     }
 }

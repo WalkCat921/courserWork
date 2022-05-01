@@ -49,16 +49,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>popupWindow</servlet-name>
-        <servlet-class>com.egor.zhukovsky.phoneshop.web.PopupWindowServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>popupWindow</servlet-name>
-        <url-pattern>/price-history/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>productCart</servlet-name>
         <servlet-class>com.egor.zhukovsky.phoneshop.web.CartPageServlet</servlet-class>
     </servlet>
@@ -66,6 +56,26 @@
     <servlet-mapping>
         <servlet-name>productCart</servlet-name>
         <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>likedProduct</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.LikedProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>likedProduct</servlet-name>
+        <url-pattern>/products/liked</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>matcingProducts</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.MatchingProductPageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>matcingProducts</servlet-name>
+        <url-pattern>/products/liked/matching</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -110,7 +120,7 @@
     
     <servlet>
         <servlet-name>logoutAdmin</servlet-name>
-        <servlet-class>com.egor.zhukovsky.phoneshop.web.LogoutServlet</servlet-class>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.LogoutServlet</servlet-class>
         <security-role-ref>
             <role-name>admin</role-name>
             <role-link>admin</role-link>
@@ -123,7 +133,7 @@
     
     <servlet>
         <servlet-name>chartPage</servlet-name>
-        <servlet-class>com.egor.zhukovsky.phoneshop.web.ChartsPageServlet</servlet-class>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.ChartsPageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>chartPage</servlet-name>
@@ -132,7 +142,7 @@
     
     <servlet>
         <servlet-name>adminMenu</servlet-name>
-        <servlet-class>com.egor.zhukovsky.phoneshop.web.AdminMenuPageServlet</servlet-class>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.AdminMenuPageServlet</servlet-class>
         <security-role-ref>
             <role-name>admin</role-name>
             <role-link>admin</role-link>
@@ -145,7 +155,7 @@
     
     <servlet>
         <servlet-name>adminTables</servlet-name>
-        <servlet-class>com.egor.zhukovsky.phoneshop.web.TablesPageServlet</servlet-class>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.TablesPageServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -155,12 +165,32 @@
 
     <servlet>
         <servlet-name>adminAddProduct</servlet-name>
-        <servlet-class>com.egor.zhukovsky.phoneshop.web.AddProductPageServlet</servlet-class>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.AddProductPageServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>adminAddProduct</servlet-name>
         <url-pattern>/admin/menu/tables/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteProduct</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.DeleteProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteProduct</servlet-name>
+        <url-pattern>/admin/menu/tables/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>editProduct</servlet-name>
+        <servlet-class>com.egor.zhukovsky.phoneshop.web.admin.EditProductPageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>editProduct</servlet-name>
+        <url-pattern>/admin/menu/tables/edit</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -204,12 +234,13 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>AdminPanel</web-resource-name>
-            <url-pattern>/admin/menu</url-pattern>
+            <url-pattern>/admin/menu/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
+
     <security-role>
         <role-name>user</role-name>
     </security-role>

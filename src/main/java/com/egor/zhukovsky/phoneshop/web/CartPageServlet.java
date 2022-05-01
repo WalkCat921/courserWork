@@ -64,7 +64,7 @@ public class CartPageServlet extends HttpServlet {
         if (errors.isEmpty()) {
             request.getSession().removeAttribute(ERROR_SESSION_ATTRIBUTE);
             request.getSession().removeAttribute(QUANTITY_SESSION_ATTRIBUTE);
-            response.sendRedirect(String.format("%s/cart?message=Cart updated successfully", request.getContextPath()));
+            response.sendRedirect(String.format("%s/cart?message=success", request.getContextPath()));
         } else {
             response.sendRedirect(String.format("%s/cart", request.getContextPath()));
         }

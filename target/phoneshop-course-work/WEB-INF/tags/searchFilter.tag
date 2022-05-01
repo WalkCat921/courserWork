@@ -6,16 +6,14 @@
 <%@ attribute name="value" required="true" %>
 <%@ attribute name="errors" required="true" type="java.util.Map" %>
 
-    <tr>
-        <td>${lable}</td>
-        <td>
+<div class="form-outline mb-4">
             <c:set var="error" value="${errors[name]}"/>
-            <input type="text" name="${name}"
+            <input class="form-control" type="text" name="${name}"
                    value="${value}"/>
-            <c:if test="${not empty error}">
-                <div class="error">
+     <label  class="form-label">${lable}</label>
+    <c:if test="${not empty error}">
+                <div class="text-danger">
                         ${error}
                 </div>
             </c:if>
-        </td>
-    </tr>
+</div>

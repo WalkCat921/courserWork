@@ -38,11 +38,23 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
+                                        Выручка по месяцам($)
                                     </div>
                                     <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                                 </div>
                             </div>
                         </div>
                     </div>
+    <script>
+        let priceStatistic = JSON.parse('${priceStatistic}');
+        let monthArraySecond = new Array();
+        let priceArray = new Array();
+        for (let i=0;i<priceStatistic.length;i++){
+            monthArraySecond.push(priceStatistic[i].month);
+        }
+        for (let i=0;i<priceStatistic.length;i++){
+            priceArray.push(priceStatistic[i].totalPrice);
+        }
+
+    </script>
     </tags:adminDash>

@@ -15,23 +15,21 @@
             </div>
         </div>
     </div>
+    <c:if test="${not empty errors}">
+        <div class="alert alert-danger" role="alert">
+            <strong>Ошибка обновления корзины!</strong>
+        </div>
+    </c:if>
+    <c:if test="${not empty param.message && param.message == 'success'}">
+        <div class="alert alert-success" role="alert">
+            <strong>Корзина обновлена!</strong>
+        </div>
+    </c:if>
     <c:if test="${empty cart.itemList}">
         <div class="container text-center">
             <h4>
                 Корзина пуста!<a href="/">Добавить продукты?</a>
             </h4>
-        </div>
-    </c:if>
-    <c:if test="${not empty param.message}">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>${param.message}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </c:if>
-    <c:if test="${not empty errors}">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Ошибка обновления корзины!</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </c:if>
 
@@ -97,4 +95,11 @@
         </div>
         <form method="post" id="deleteCartItem"></form>
     </c:if>
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 2000);
+    </script>
 </tags:master>

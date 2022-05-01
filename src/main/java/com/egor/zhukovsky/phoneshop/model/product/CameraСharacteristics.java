@@ -2,15 +2,19 @@ package com.egor.zhukovsky.phoneshop.model.product;
 
 import com.egor.zhukovsky.phoneshop.model.entity.Item;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
 
-//@Entity
-public class CameraСharacteristics extends Item {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Entity
+public class CameraСharacteristics extends Item implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String builtCamera;
     private String video;
@@ -65,5 +69,16 @@ public class CameraСharacteristics extends Item {
 
     public void setDiaphragm(String diaphragm) {
         this.diaphragm = diaphragm;
+    }
+
+    @Override
+    public String toString() {
+        return "CameraСharacteristics{" +
+                "id=" + id +
+                ", builtCamera='" + builtCamera + '\'' +
+                ", video='" + video + '\'' +
+                ", frontalCamera='" + frontalCamera + '\'' +
+                ", diaphragm='" + diaphragm + '\'' +
+                "} ";
     }
 }

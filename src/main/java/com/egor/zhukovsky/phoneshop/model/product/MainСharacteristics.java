@@ -7,14 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-//@Entity
-public class MainСharacteristics extends Item {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Entity
+public class MainСharacteristics extends Item implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @Column(nullable = true)
-    private int releaseYear;
+    @Column(nullable = true)
+    private Integer releaseYear;
     private String os;
     private String osVersion;
     private String screenSize;
@@ -67,5 +68,16 @@ public class MainСharacteristics extends Item {
 
     public void setScreenSize(String screenSize) {
         this.screenSize = screenSize;
+    }
+
+    @Override
+    public String toString() {
+        return "MainСharacteristics{" +
+                "id=" + id +
+                ", releaseYear=" + releaseYear +
+                ", os='" + os + '\'' +
+                ", osVersion='" + osVersion + '\'' +
+                ", screenSize='" + screenSize + '\'' +
+                "} ";
     }
 }

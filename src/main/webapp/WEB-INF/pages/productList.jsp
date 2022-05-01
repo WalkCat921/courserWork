@@ -63,9 +63,9 @@
             Ошибка добавления в корзину
         </div>
     </c:if>
-    <c:if test="${not empty param.message}">
+    <c:if test="${not empty param.message && param.message == 'success'}">
         <div class="alert alert-success mt-5" role="alert">
-            <p class="error">${param.message}</p>
+            <p class="error">Товар успешно добавлен!</p>
         </div>
     </c:if>
     <div class="row mt-5" >
@@ -73,6 +73,9 @@
                 <div class="col-7 col-lg-3">
                     <form method="post" action="${pageContext.servletContext.contextPath}/products">
                         <div class="card text-center hover-overlay hover-zoom hover-shadow ripple" style="width: 18rem;">
+                            <div class="text-lg-end mx-4 mt-4">
+                                <i id="${product.code}" class="far fa-heart"></i>
+                            </div>
                             <a href="${pageContext.servletContext.contextPath}/products/${product.code}" style="text-decoration: none">
                                 <div class="card-body">
                             <ul class="list-group list-group-flush">
@@ -86,7 +89,6 @@
                                     <h2><fmt:formatNumber value="${product.price}" type="currency"
                                                                           currencySymbol="${product.currency.symbol}"/></h2>
                                 </li>
-
                             </ul>
                                 </div>
                             </a>
@@ -103,9 +105,6 @@
 
     <br>
     <br>
-    <div class="w3-content">
-
-    </div>
     <br>
     <br>
     <br>
@@ -133,5 +132,66 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // window.onbeforeunload = () => {
+        //     sessionStorage.clear();
+        // }
+        let likeIcon = document.getElementsByClassName("far fa-heart");
+        let addedArray = new Array();
+        if (JSON.parse(sessionStorage.getItem('liked')) != null){
+            addedArray = JSON.parse(sessionStorage.getItem('liked'));
+        }
+        for (let i=0;i<likeIcon.length;i++){
+            let icon = likeIcon[i];
+            // console.log(icon.getAttribute('id').valueOf())
+            // console.log(addedArray.includes(icon.getAttribute('id')))
+            for(const el of addedArray){
+                if (el.toString()===icon.getAttribute('id')){
+                    icon.className = "fas fa-heart"
+                }
+            }
+        }
+        console.log(addedArray)
+        for (let x = 0;x<likeIcon.length;x++){
+            let icon = likeIcon[x];
+            icon.addEventListener("click",function (fn){
+                //TODO fix problem with likes below 3
+                    if (icon.className=="far fa-heart"){
+                        if (addedArray.length  ===3){
+                            alert("Нельзя добавить больше 3 товаров для сравнения. Для начала уберить какой-нибудь товар")
+                        } else {
+                            icon.className = "fas fa-heart";
+                            let urlParam = '/products/liked?likedCode='+icon.getAttribute("id")
+                            $.ajax({
+                                url: urlParam,
+                                method: "post",
+                                contentType: 'text/html;charset=UTF-8',
+                            });
+                            addedArray.push(icon.getAttribute('id'))
+                            sessionStorage.setItem('liked',JSON.stringify(addedArray));
+                        }
+                    } else {
+                        icon.className = "far fa-heart";
+                        let urlParam = '/products/liked?unlikedCode='+icon.getAttribute("id")
+                        $.ajax({
+                            url: urlParam,
+                            method: "get",
+                            contentType: 'text/html;charset=UTF-8',
+                        })
+                        let index = addedArray.indexOf(icon.getAttribute('id'));
+                        console.log(index)
+                        if (index==0){
+                            addedArray.shift();
+
+                        } else {
+                            addedArray.splice(0,0);
+                        }
+                        sessionStorage.removeItem('liked');
+                        sessionStorage.setItem('liked',JSON.stringify(addedArray))
+                    }
+            })
+        }
+    </script>
 </tags:master>
 

@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProductListPageServlet extends HttpServlet {
@@ -85,10 +87,10 @@ public class ProductListPageServlet extends HttpServlet {
             quantities.put(code, quantityString);
             cartService.add(cart, code, parseQuantity(quantityString, request));
             if (query.isEmpty()) {
-                response.sendRedirect(String.format("%s/products?message=Added to cart successfully",
+                response.sendRedirect(String.format("%s/products?message=success",
                         request.getContextPath()));
             } else {
-                response.sendRedirect(String.format("%s/products?message=Added to cart successfully&query=%s",
+                response.sendRedirect(String.format("%s/products?message=success&query=%s",
                         request.getContextPath(),
                         query));
             }

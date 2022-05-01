@@ -83,19 +83,19 @@
                         <tbody>
                         <tr>
                             <td>Дата выхода на рынок</td>
-                            <td>2022</td>
+                            <td>${product.mainСharacteristics.releaseYear}</td>
                         </tr>
                         <tr>
                             <td>Операционная система</td>
-                            <td>Android</td>
+                            <td>${product.mainСharacteristics.os}</td>
                         </tr>
                         <tr>
                             <td>Исходная версия операционной системы</td>
-                            <td>Android 12</td>
+                            <td>${product.mainСharacteristics.osVersion}</td>
                         </tr>
                         <tr>
                             <td>Размер экрана</td>
-                            <td>6.1</td>
+                            <td>${product.mainСharacteristics.screenSize}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -114,19 +114,19 @@
                         <tbody>
                         <tr>
                             <td>Встроенная камера</td>
-                            <td>2022</td>
+                            <td>${product.cameraСharacteristics.builtCamera}</td>
                         </tr>
                         <tr>
                             <td>Максимальное разрешение видео</td>
-                            <td>Android</td>
+                            <td>${product.cameraСharacteristics.video}</td>
                         </tr>
                         <tr>
                             <td>Фронтальная камера</td>
-                            <td>Android 12</td>
+                            <td>${product.cameraСharacteristics.frontalCamera}</td>
                         </tr>
                         <tr>
                             <td>Диафрагма</td>
-                            <td>6.1</td>
+                            <td>${product.cameraСharacteristics.diaphragm}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -145,48 +145,39 @@
                         <tbody>
                         <tr>
                             <td>Аудиовыход</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.audioType}</td>
                         </tr>
                         <tr>
                             <td>Емкость аккумулятора</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.battery}  мА·ч</td>
                         </tr>
                         <tr>
                             <td>Материал корпуса</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.material}</td>
                         </tr>
                         <tr>
                             <td>Графический ускоритель</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.graphics}</td>
                         </tr>
                         <tr>
                             <td>Количество ядер</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.core}</td>
                         </tr>
                         <tr>
                             <td>Процессор</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.cpu}</td>
                         </tr>
                         <tr>
                             <td>Формат SIM-карты</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.sim}</td>
                         </tr>
                         <tr>
                             <td>Объем оперативной памяти</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.ram} Гб</td>
                         </tr>
                         <tr>
                             <td>Объем встроенной памяти</td>
-                            <td>
-                            </td>
+                            <td>${product.otherСharacteristics.builtMemory} Гб</td>
                         </tr>
                         </tbody>
                     </table>

@@ -26,9 +26,10 @@
         <mapping class="com.egor.zhukovsky.phoneshop.model.order.Order"/>
         <mapping class="com.egor.zhukovsky.phoneshop.model.statistic.VisitorsStatistic"/>
         <mapping class="com.egor.zhukovsky.phoneshop.model.statistic.SalesStatistic"/>
-<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.MainСharacteristics"/>-->
-<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.CameraСharacteristics"/>-->
-<!--        <mapping class="com.egor.zhukovsky.phoneshop.model.product.OtherСharacteristics"/>-->
+        <mapping class="com.egor.zhukovsky.phoneshop.model.product.MainСharacteristics"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.product.CameraСharacteristics"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.product.OtherСharacteristics"/>
+        <mapping class="com.egor.zhukovsky.phoneshop.model.statistic.PriceStatistic"/>
     </session-factory>
 </hibernate-configuration>
 

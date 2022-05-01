@@ -3,6 +3,7 @@ com\egor\zhukovsky\phoneshop\web\ProductListPageServletTest.class
 com\egor\zhukovsky\phoneshop\web\SampleDataServletContextListenerTest.class
 com\egor\zhukovsky\phoneshop\web\CartPageServletTest.class
 com\egor\zhukovsky\phoneshop\model\sort\SortOrderTest.class
+com\egor\zhukovsky\phoneshop\validator\ProductFormValidatorTest.class
 com\egor\zhukovsky\phoneshop\web\OrderOverviewPageServletTest.class
 com\egor\zhukovsky\phoneshop\web\ProductDetailsPageServletTest.class
 com\egor\zhukovsky\phoneshop\security\impl\DosProtectionServiceImplTest.class
@@ -10,7 +11,6 @@ com\egor\zhukovsky\phoneshop\model\sort\SortFieldTest.class
 com\egor\zhukovsky\phoneshop\validator\FormValidatorTest.class
 com\egor\zhukovsky\phoneshop\model\search\SearchFilterTest.class
 com\egor\zhukovsky\phoneshop\web\DeleteCartItemServletTest.class
-com\egor\zhukovsky\phoneshop\web\PopupWindowServletTest.class
 com\egor\zhukovsky\phoneshop\dao\impl\ArrayListProductDaoTest.class
 com\egor\zhukovsky\phoneshop\service\impl\OrderServiceImplTest.class
 com\egor\zhukovsky\phoneshop\web\DosFilterTest.class

@@ -5,6 +5,7 @@ import com.egor.zhukovsky.phoneshop.dao.DAO;
 import com.egor.zhukovsky.phoneshop.model.entity.Item;
 import lombok.NonNull;
 import org.hibernate.Session;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.List;
 
@@ -77,13 +78,14 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
 
     @Override
     public void delete(Long id) {
+        sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
         synchronized (LOCK) {
             try{
                 sessionDB.beginTransaction();
                 int res = sessionDB.createQuery("delete Product where id = :id").setParameter("id",id).executeUpdate();
                 System.out.println(res);
             } finally {
-                sessionDB.getTransaction().commit();
+                    sessionDB.getTransaction().commit();
                 sessionDB.close();
             }
         }

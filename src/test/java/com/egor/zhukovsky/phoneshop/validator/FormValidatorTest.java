@@ -31,7 +31,7 @@ public class FormValidatorTest {
     public void testValidateFirstNameSuccess() {
         final String firstName = "Egor";
 
-        FormValidator.validateOrderForm(firstName,FIRST_NAME_PARAM,errors,order::setFirstName);
+        OrderFormValidator.validateOrderForm(firstName,FIRST_NAME_PARAM,errors,order::setFirstName);
 
         assertTrue(errors.isEmpty());
         assertNotNull(order.getFirstName());
@@ -41,7 +41,7 @@ public class FormValidatorTest {
     public void testValidateLastNameSuccess() {
         final String lastName = "Tapok";
 
-        FormValidator.validateOrderForm(lastName,LAST_NAME_PARAM,errors,order::setLastName);
+        OrderFormValidator.validateOrderForm(lastName,LAST_NAME_PARAM,errors,order::setLastName);
 
         assertTrue(errors.isEmpty());
         assertNotNull(order.getLastName());
@@ -51,7 +51,7 @@ public class FormValidatorTest {
     public void testValidatePhoneSuccess() {
         final String phone = "375293451232";
 
-        FormValidator.validateOrderForm(phone,PHONE_PARAM,errors,order::setPhone);
+        OrderFormValidator.validateOrderForm(phone,PHONE_PARAM,errors,order::setPhone);
 
         assertTrue(errors.isEmpty());
         assertNotNull(order.getPhone());
@@ -61,7 +61,7 @@ public class FormValidatorTest {
     public void testValidateDeliveryDateSuccess() {
         final String currentDate = LocalDate.now().toString();
 
-        FormValidator.validateOrderForm(currentDate,DELIVERY_DATE_PARAM,errors,order::setDeliveryDate);
+        OrderFormValidator.validateOrderForm(currentDate,DELIVERY_DATE_PARAM,errors,order::setDeliveryDate);
 
         assertTrue(errors.isEmpty());
         assertNotNull(order.getDeliveryDate());
@@ -71,7 +71,7 @@ public class FormValidatorTest {
     public void testValidateDeliveryAddressSuccess() {
         final String address = "st. Test 13-2, Test";
 
-        FormValidator.validateOrderForm(address,DELIVERY_ADDRESS_PARAM,errors,order::setDeliveryAddress);
+        OrderFormValidator.validateOrderForm(address,DELIVERY_ADDRESS_PARAM,errors,order::setDeliveryAddress);
 
         assertTrue(errors.isEmpty());
         assertNotNull(order.getDeliveryAddress());
@@ -81,7 +81,7 @@ public class FormValidatorTest {
     public void testValidatePaymentMethodSuccess() {
         final String paymentMethod = "CASH";
 
-        FormValidator.validateOrderForm(paymentMethod,PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
+        OrderFormValidator.validateOrderForm(paymentMethod,PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
 
         assertTrue(errors.isEmpty());
         assertNotNull(order.getPaymentMethod());
@@ -89,14 +89,14 @@ public class FormValidatorTest {
 
     @Test
     public void testValidateNullAddErrorInMap() {
-        FormValidator.validateOrderForm(null,PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
+        OrderFormValidator.validateOrderForm(null,PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
 
         assertTrue(!errors.isEmpty());
     }
 
     @Test
     public void testValidateEmptyAddErrorInMap() {
-        FormValidator.validateOrderForm("",PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
+        OrderFormValidator.validateOrderForm("",PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
 
         assertTrue(!errors.isEmpty());
     }
@@ -106,8 +106,8 @@ public class FormValidatorTest {
         final String wrongFirstName = "sj=-ndiw";
         final String wrongLastName = "Zi92jd92";
 
-        FormValidator.validateOrderForm(wrongFirstName,FIRST_NAME_PARAM,errors,order::setFirstName);
-        FormValidator.validateOrderForm(wrongLastName,LAST_NAME_PARAM,errors,order::setLastName);
+        OrderFormValidator.validateOrderForm(wrongFirstName,FIRST_NAME_PARAM,errors,order::setFirstName);
+        OrderFormValidator.validateOrderForm(wrongLastName,LAST_NAME_PARAM,errors,order::setLastName);
 
         assertTrue(!errors.isEmpty());
         assertTrue(errors.keySet().contains(FIRST_NAME_PARAM));
@@ -118,7 +118,7 @@ public class FormValidatorTest {
     public void testValidateWrongPhoneAddErrorInMap() {
         final String wrongPhone = "462hgebw72gd";
 
-        FormValidator.validateOrderForm(wrongPhone,PHONE_PARAM,errors,order::setPhone);
+        OrderFormValidator.validateOrderForm(wrongPhone,PHONE_PARAM,errors,order::setPhone);
 
         assertTrue(!errors.isEmpty());
         assertTrue(errors.keySet().contains(PHONE_PARAM));
@@ -128,7 +128,7 @@ public class FormValidatorTest {
     public void testValidateWrongDeliveryDateAddErrorInMap() {
         final String wrongDate = LocalDate.now().plusWeeks(3).toString();
 
-        FormValidator.validateOrderForm(wrongDate,DELIVERY_DATE_PARAM,errors,order::setDeliveryDate);
+        OrderFormValidator.validateOrderForm(wrongDate,DELIVERY_DATE_PARAM,errors,order::setDeliveryDate);
 
         assertTrue(!errors.isEmpty());
         assertTrue(errors.keySet().contains(DELIVERY_DATE_PARAM));
@@ -138,7 +138,7 @@ public class FormValidatorTest {
     public void testValidateWrongDeliveryAddressAddErrorInMap() {
         final String wrongAddress = "test 23 2 1";
 
-        FormValidator.validateOrderForm(wrongAddress,DELIVERY_ADDRESS_PARAM,errors,order::setDeliveryAddress);
+        OrderFormValidator.validateOrderForm(wrongAddress,DELIVERY_ADDRESS_PARAM,errors,order::setDeliveryAddress);
 
         assertTrue(!errors.isEmpty());
         assertTrue(errors.keySet().contains(DELIVERY_ADDRESS_PARAM));
@@ -148,7 +148,7 @@ public class FormValidatorTest {
     public void testValidateWrongPaymentMethodAddErrorInMap() {
         final String wrongPayment = "FREE";
 
-        FormValidator.validateOrderForm(wrongPayment,PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
+        OrderFormValidator.validateOrderForm(wrongPayment,PAYMENT_METHOD_PARAM,errors,order::setPaymentMethod);
 
         assertTrue(!errors.isEmpty());
         assertTrue(errors.keySet().contains(PAYMENT_METHOD_PARAM));

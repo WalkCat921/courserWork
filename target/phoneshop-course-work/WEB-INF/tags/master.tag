@@ -47,13 +47,13 @@
                     <a href="#footer" class="nav-link">Контакты</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">О нас</a>
+                    <a href="#footer" class="nav-link">О нас</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Что</a>
+                    <a href="/products/liked/matching" id="matchBtn" class="nav-link">Сравнить товары</a>
                 </li>
             </ul>
-            <a class="nav-link" href="${pageContext.servletContext.contextPath}/cart">
+            <a class="nav-link" href="/cart">
                 <jsp:include page="../pages/miniCart.jsp"/>
             </a>
         </div>
@@ -134,24 +134,24 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
-                    </p>
-                </div>
+<%--                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">--%>
+<%--                    <!-- Links -->--%>
+<%--                    <h6 class="text-uppercase fw-bold mb-4">--%>
+<%--                        Useful links--%>
+<%--                    </h6>--%>
+<%--                    <p>--%>
+<%--                        <a href="#!" class="text-reset">Pricing</a>--%>
+<%--                    </p>--%>
+<%--                    <p>--%>
+<%--                        <a href="#!" class="text-reset">Settings</a>--%>
+<%--                    </p>--%>
+<%--                    <p>--%>
+<%--                        <a href="#!" class="text-reset">Orders</a>--%>
+<%--                    </p>--%>
+<%--                    <p>--%>
+<%--                        <a href="#!" class="text-reset">Help</a>--%>
+<%--                    </p>--%>
+<%--                </div>--%>
                 <!-- Grid column -->
 
                 <!-- Grid column -->

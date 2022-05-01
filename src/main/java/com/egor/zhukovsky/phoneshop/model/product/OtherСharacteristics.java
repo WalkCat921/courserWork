@@ -6,11 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-//@Entity
-public class OtherСharacteristics extends Item {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Entity
+public class OtherСharacteristics extends Item implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String audioType;
     private int battery;
@@ -115,5 +116,21 @@ public class OtherСharacteristics extends Item {
 
     public void setBuiltMemory(int builtMemory) {
         this.builtMemory = builtMemory;
+    }
+
+    @Override
+    public String toString() {
+        return "OtherСharacteristics{" +
+                "id=" + id +
+                ", audioType='" + audioType + '\'' +
+                ", battery=" + battery +
+                ", material='" + material + '\'' +
+                ", graphics='" + graphics + '\'' +
+                ", core=" + core +
+                ", cpu='" + cpu + '\'' +
+                ", sim='" + sim + '\'' +
+                ", ram=" + ram +
+                ", builtMemory=" + builtMemory +
+                "} ";
     }
 }

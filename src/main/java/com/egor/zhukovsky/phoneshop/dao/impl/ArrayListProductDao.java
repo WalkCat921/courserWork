@@ -1,5 +1,6 @@
 package com.egor.zhukovsky.phoneshop.dao.impl;
 
+import com.egor.zhukovsky.phoneshop.config.HibernateSessionFactory;
 import com.egor.zhukovsky.phoneshop.model.order.Order;
 import com.egor.zhukovsky.phoneshop.model.product.Product;
 import com.egor.zhukovsky.phoneshop.dao.ProductDao;
@@ -42,10 +43,20 @@ public class ArrayListProductDao extends AbstractDao<Product> implements Product
     @Override
     public Product getByCode(String code) throws NoSuchElementException, NullPointerException {
         synchronized (LOCK) {
-            return super.findAll().stream()
-                    .filter(product -> code.equals(product.getCode()))
-                    .findAny()
-                    .orElseThrow(() -> new NoSuchElementException(String.format("Product with code %s not found", code)));
+            sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
+            synchronized (LOCK) {
+                try{
+                    sessionDB.beginTransaction();
+                    List<Product> product = sessionDB.createQuery("from Product where code = :code").setParameter("code",code).list();
+                    if (product.isEmpty()){
+                        return null;
+                    }
+                    return product.get(0);
+                } finally {
+                    sessionDB.getTransaction().commit();
+                    sessionDB.close();
+                }
+            }
         }
     }
 

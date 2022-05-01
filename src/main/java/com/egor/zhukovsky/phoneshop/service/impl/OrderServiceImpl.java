@@ -44,7 +44,6 @@ public class OrderServiceImpl implements OrderService {
             order.setSubtotal(cart.getTotalCost());
             order.setDeliveryCost(calculateDeliveryCost());
             order.setTotal(order.getSubtotal().add(order.getDeliveryCost()));
-
             return order;
         }
     }
