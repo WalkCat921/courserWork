@@ -20,9 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ProductListPageServlet extends HttpServlet {
@@ -68,7 +66,7 @@ public class ProductListPageServlet extends HttpServlet {
         }
         setAttributeFromSession(request, ERROR_SESSION_ATTRIBUTE, ERROR_ATTRIBUTE);
         setAttributeFromSession(request, QUANTITY_SESSION_ATTRIBUTE, QUANTITY_PARAM);
-        request.setAttribute(CART_ATTRIBUTE,cartService.getCart(request.getSession()));
+        request.setAttribute(CART_ATTRIBUTE, cartService.getCart(request.getSession()));
         request.setAttribute(RECENTLY_VIEW_ATTRIBUTE,
                 recentlyViewService.getRecentlyViewedProducts(request.getSession()));
         response.setHeader(CACHE_HEADER, CACHE_HEADER_PARAMETERS);

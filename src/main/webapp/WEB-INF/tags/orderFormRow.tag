@@ -56,7 +56,10 @@
 <c:if test="${name.equals('paymentMethod')}">
             <select name="${name}" class="form-select">
                 <c:forEach var="paymentM" items="${paymentMethod}">
-                    <option>${paymentM}</option>
+                    <option value="${paymentM}">
+                        <c:if test="${paymentM eq 'CASH'}">Наличка</c:if>
+                        <c:if test="${paymentM eq 'CREDIT_CARD'}">Карта</c:if>
+                    </option>
                 </c:forEach>
             </select>
             <c:set var="error" value="${errors[name]}"/>

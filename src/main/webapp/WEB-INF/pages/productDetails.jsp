@@ -54,7 +54,7 @@
                     <form method="post">
                         <label class="form-label" for="customRange1">Количество :</label>
                         <div class="range">
-                            <input type="range" max="${product.stock}" name="quantity" value="${not empty error ? param.quantity : 1}" class="form-range" id="customRange1" />
+                            <input type="range" min="1" max="${product.stock}" name="quantity" value="${not empty error ? param.quantity : 1}" class="form-range" id="customRange1" />
                             <p id="rangeValue"></p>
                         </div>
                     <br>
@@ -185,11 +185,6 @@
             </div>
         </div>
     </div>
-    <%--    <div style="width: 100%">--%>
-    <%--        <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"--%>
-    <%--                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Prospekt%20Dzerzhinskogo%20106,%20Minsk%20220116+(My%20Business%20Name)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">--%>
-    <%--            <a href="https://www.gps.ie/marine-gps/">boat tracking</a></iframe>--%>
-    <%--    </div>--%>
     <br>
     <br>
     <br>

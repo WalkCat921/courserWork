@@ -45,88 +45,124 @@
     </div>
   </c:forEach>
       </div>
-    <div class="row mt-5" >
-      <c:forEach var="product" items="${likedProducts}" varStatus="status">
-        <div class="col-lg-4">
+  <c:set var="prod" value="${likedProducts}"/>
+    <div class="row mt-5">
+        <div class="col-lg-12">
           <table class="table table-bordered">
             <thead>
             <tr>
-              <th class="text-center" scope="row" colspan="2">${product.description}</th>
+              <th></th>
+              <c:forEach var="product" items="${prod}" varStatus="status">
+              <th class="text-center" scope="row">${product.description}</th>
+              </c:forEach>
             </tr>
             </thead>
             <tbody>
             <tr>
               <th scope="row">Дата выхода на рынок</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.mainСharacteristics.releaseYear}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Операционная система</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.mainСharacteristics.os}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Исходная версия операционной системы</th>
-              <td>${product.mainСharacteristics.osVersion}</td>
+              <c:forEach var="product" items="${prod}">
+                <td>${product.mainСharacteristics.osVersion}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Размер экрана</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.mainСharacteristics.screenSize}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Встроенная камера</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.cameraСharacteristics.builtCamera}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Максимальное разрешение видео</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.cameraСharacteristics.video}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Фронтальная камера</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.cameraСharacteristics.frontalCamera}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Диафрагма</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.cameraСharacteristics.diaphragm}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Аудиовыход</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.audioType}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Емкость аккумулятора</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.battery}  мА·ч</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Материал корпуса</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.material}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Графический ускоритель</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.graphics}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Количество ядер</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.core}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Процессор</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.cpu}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Формат SIM-карты</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.sim}</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Объем оперативной памяти</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.ram} Гб</td>
+              </c:forEach>
             </tr>
             <tr>
               <th scope="row">Объем встроенной памяти</th>
+              <c:forEach var="product" items="${prod}">
               <td>${product.otherСharacteristics.builtMemory} Гб</td>
+              </c:forEach>
             </tr>
             </tbody>
           </table>
         </div>
-      </c:forEach>
   <div class="row mt-5">
     <tags:recentlyView recentlyView="${recentlyView}"/>
   </div>

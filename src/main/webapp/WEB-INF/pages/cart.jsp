@@ -77,9 +77,9 @@
                 </c:forEach>
                 <tr>
                     <td></td>
-                    <td>Total quantity:</td>
+                    <td>Итоговое кол-во:</td>
                     <td>${cart.totalQuantity}</td>
-                    <td>Total cost:</td>
+                    <td>Итоговая стоимость (без доставки):</td>
                     <td><fmt:formatNumber value="${cart.totalCost}" type="currency"
                                           currencySymbol="${cart.currency.symbol}"/></td>
                 </tr>

@@ -46,7 +46,6 @@ public class EditProductPageServlet extends HttpServlet {
     private static final String ERROR_SESSION_ATTRIBUTE = "ErrorSessionAddProductPage";
     private static final String CACHE_HEADER = "Cache-Control";
     private static final String CACHE_HEADER_PARAMETERS = "no-cache, no-store, must-revalidate";
-    //    private static final String PRODUCT_TABLE_ATTRIBUTE = "products";
     private static final String ADMIN_MENU_JSP_PATH = "/WEB-INF/startbootstrap-sb-admin-gh-pages/html/formForPhone.jsp";
     private ProductDao productDao;
 
@@ -128,7 +127,6 @@ public class EditProductPageServlet extends HttpServlet {
         product.setOtherСharacteristics(otherСharacteristics);
         if (errors.isEmpty()){
             productDao.update(product);
-//            request.getRequestDispatcher("/WEB-INF/startbootstrap-sb-admin-gh-pages/html/tables.jsp").forward(request,response);
             response.sendRedirect("/admin/menu/tables");
         } else {
             setValueInSession(request, ERROR_SESSION_ATTRIBUTE, errors);

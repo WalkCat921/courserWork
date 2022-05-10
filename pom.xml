@@ -111,13 +111,6 @@
       <plugins>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-war-plugin</artifactId>
-              <configuration>
-                  <archiveClasses>true</archiveClasses>
-              </configuration>
-          </plugin>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
               <version>3.8.1</version>
               <configuration>
@@ -138,12 +131,13 @@
                       <configuration>
                           <artifactItems>
                               <artifactItem>
-                                  <groupId>com.github.jsimone</groupId>
+                                  <groupId>com.heroku</groupId>
                                   <artifactId>webapp-runner</artifactId>
-                                  <version>8.0.30.2</version>
+                                  <version>9.0.31.0</version>
                                   <destFileName>webapp-runner.jar</destFileName>
                               </artifactItem>
                           </artifactItems>
+                          <outputDirectory>target</outputDirectory>
                       </configuration>
                   </execution>
               </executions>

@@ -5,7 +5,6 @@ import com.egor.zhukovsky.phoneshop.dao.DAO;
 import com.egor.zhukovsky.phoneshop.model.entity.Item;
 import lombok.NonNull;
 import org.hibernate.Session;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.List;
 
@@ -21,10 +20,10 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
     public T get(Long id) {
         sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
         synchronized (LOCK) {
-            try{
+            try {
                 T object = null;
                 sessionDB.beginTransaction();
-                return (T) sessionDB.get(object.getClass(),id);
+                return (T) sessionDB.get(object.getClass(), id);
             } finally {
                 sessionDB.getTransaction().commit();
                 sessionDB.close();
@@ -36,7 +35,7 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
     public List<T> findAll() {
         sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
         synchronized (LOCK) {
-            try{
+            try {
                 sessionDB.beginTransaction();
                 return sessionDB.createQuery("FROM Product").list();
             } finally {
@@ -50,11 +49,10 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
     public void save(@NonNull T object) {
         sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
         synchronized (LOCK) {
-            try{
+            try {
                 sessionDB.beginTransaction();
                 sessionDB.save(object);
-            }finally {
-//                sessionDB.flush();
+            } finally {
                 sessionDB.getTransaction().commit();
                 sessionDB.close();
             }
@@ -65,11 +63,10 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
     public void update(@NonNull T object) {
         sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
         synchronized (LOCK) {
-            try{
+            try {
                 sessionDB.beginTransaction();
                 sessionDB.update(object);
-            }finally {
-//                sessionDB.flush();
+            } finally {
                 sessionDB.getTransaction().commit();
                 sessionDB.close();
             }
@@ -80,12 +77,12 @@ public abstract class AbstractDao<T extends Item> implements DAO<T> {
     public void delete(Long id) {
         sessionDB = HibernateSessionFactory.getSessionFactory().openSession();
         synchronized (LOCK) {
-            try{
+            try {
                 sessionDB.beginTransaction();
-                int res = sessionDB.createQuery("delete Product where id = :id").setParameter("id",id).executeUpdate();
+                int res = sessionDB.createQuery("delete Product where id = :id").setParameter("id", id).executeUpdate();
                 System.out.println(res);
             } finally {
-                    sessionDB.getTransaction().commit();
+                sessionDB.getTransaction().commit();
                 sessionDB.close();
             }
         }

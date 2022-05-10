@@ -223,6 +223,10 @@
         <error-code>500</error-code>
     </error-page>
 
+    <error-page>
+        <location>/WEB-INF/startbootstrap-sb-admin-gh-pages/html/404.html</location>
+        <error-code>404</error-code>
+    </error-page>
 
     <login-config>
         <auth-method>FORM</auth-method>
@@ -235,6 +239,8 @@
         <web-resource-collection>
             <web-resource-name>AdminPanel</web-resource-name>
             <url-pattern>/admin/menu/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>

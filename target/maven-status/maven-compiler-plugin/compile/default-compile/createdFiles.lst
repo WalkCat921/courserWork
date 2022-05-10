@@ -6,6 +6,7 @@ com\egor\zhukovsky\phoneshop\dao\PriceStatisticDao.class
 com\egor\zhukovsky\phoneshop\validator\ProductFormValidator.class
 com\egor\zhukovsky\phoneshop\service\OrderService.class
 com\egor\zhukovsky\phoneshop\service\VisitorsStatisticService.class
+com\egor\zhukovsky\phoneshop\model\product\OtherСharacteristics.class
 com\egor\zhukovsky\phoneshop\dao\impl\AbstractDao.class
 com\egor\zhukovsky\phoneshop\model\cart\CartItem.class
 com\egor\zhukovsky\phoneshop\model\sort\SortOrder.class
@@ -15,12 +16,16 @@ com\egor\zhukovsky\phoneshop\config\Config.class
 com\egor\zhukovsky\phoneshop\service\impl\SalesStatisticServiceImpl.class
 com\egor\zhukovsky\phoneshop\dao\VisitorsStatisticDao.class
 com\egor\zhukovsky\phoneshop\service\impl\PriceStatisticServiceImpl.class
+com\egor\zhukovsky\phoneshop\model\product\MainСharacteristics.class
 com\egor\zhukovsky\phoneshop\service\impl\OrderServiceImpl.class
 com\egor\zhukovsky\phoneshop\web\admin\AdminMenuPageServlet.class
 com\egor\zhukovsky\phoneshop\web\admin\LogoutServlet.class
 com\egor\zhukovsky\phoneshop\web\LikedProductServlet.class
+com\egor\zhukovsky\phoneshop\dao\CameraСharacteristicsDao.class
+com\egor\zhukovsky\phoneshop\dao\impl\CameraСharacteristicsDaoImpl.class
 com\egor\zhukovsky\phoneshop\web\admin\EditProductPageServlet.class
 com\egor\zhukovsky\phoneshop\model\statistic\VisitorsStatistic.class
+com\egor\zhukovsky\phoneshop\dao\OtherСharacteristicsDao.class
 com\egor\zhukovsky\phoneshop\model\search\SearchFilter.class
 com\egor\zhukovsky\phoneshop\model\cart\Cart.class
 com\egor\zhukovsky\phoneshop\model\statistic\PriceStatistic.class
@@ -38,6 +43,7 @@ com\egor\zhukovsky\phoneshop\web\ProductDetailsPageServlet.class
 com\egor\zhukovsky\phoneshop\model\order\Order.class
 com\egor\zhukovsky\phoneshop\model\shop\Shop.class
 com\egor\zhukovsky\phoneshop\service\CartService.class
+com\egor\zhukovsky\phoneshop\dao\impl\OtherСharacteristicsDaoImpl.class
 com\egor\zhukovsky\phoneshop\dao\impl\ArrayListProductDao.class
 com\egor\zhukovsky\phoneshop\exception\OutOfStockException.class
 com\egor\zhukovsky\phoneshop\web\admin\DeleteProductServlet.class
@@ -45,6 +51,7 @@ com\egor\zhukovsky\phoneshop\web\SampleDataServletContextListener.class
 com\egor\zhukovsky\phoneshop\web\admin\TablesPageServlet.class
 com\egor\zhukovsky\phoneshop\security\impl\DosProtectionServiceImpl$1.class
 com\egor\zhukovsky\phoneshop\dao\OrderDao.class
+com\egor\zhukovsky\phoneshop\dao\MainСharacteristicsDao.class
 com\egor\zhukovsky\phoneshop\dao\impl\VisitorsStatisticDaoImpl.class
 com\egor\zhukovsky\phoneshop\service\SalesStatisticService.class
 com\egor\zhukovsky\phoneshop\dao\ShopDao.class
@@ -55,6 +62,7 @@ com\egor\zhukovsky\phoneshop\web\filters\VisitorCountFilter.class
 com\egor\zhukovsky\phoneshop\model\entity\Item.class
 com\egor\zhukovsky\phoneshop\service\RecentlyViewService.class
 com\egor\zhukovsky\phoneshop\dao\impl\ShopDaoImpl.class
+com\egor\zhukovsky\phoneshop\dao\impl\MainСharacteristicsDaoImpl.class
 com\egor\zhukovsky\phoneshop\model\product\SampleProduct.class
 com\egor\zhukovsky\phoneshop\web\SearchPageServlet.class
 com\egor\zhukovsky\phoneshop\model\price\PriceHistory.class
@@ -67,4 +75,5 @@ com\egor\zhukovsky\phoneshop\service\impl\RecentlyViewServiceImpl.class
 com\egor\zhukovsky\phoneshop\web\filters\DosFilter.class
 com\egor\zhukovsky\phoneshop\web\MatchingProductPageServlet.class
 com\egor\zhukovsky\phoneshop\web\admin\AddProductPageServlet.class
+com\egor\zhukovsky\phoneshop\model\product\CameraСharacteristics.class
 com\egor\zhukovsky\phoneshop\service\impl\VisitorsStatisticServiceImpl.class

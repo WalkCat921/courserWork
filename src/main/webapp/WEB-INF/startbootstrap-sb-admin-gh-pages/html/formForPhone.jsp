@@ -6,7 +6,7 @@
 
 <tags:adminDash>
                     <div class="container">
-                            <div class="col-lg-7">
+                            <div class="col-lg-12">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Новый продукт</h3></div>
                                     <div class="card-body">
@@ -38,10 +38,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+<%--                                    </div>--%>
+                                </div>
+                            </div>
+                    </div>
                                             <div class="accordion mt-5" id="accordionExample">
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingOne">
-                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collaps   eOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                             Основные характеристики
                                                         </button>
                                                     </h2>
@@ -62,7 +66,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Версия ОС</td>
+                                                                    <td>Исходная версия операционной системы</td>
                                                                     <td>
                                                                         <tags:phoneFormRow productAdd="${productAdd}" id="inputOSVersion" name="osVersion" type="text" errors="${errors}"/>
                                                                     </td>
@@ -192,7 +196,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                </div>
-                            </div>
-                    </div>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                    </div>--%>
 </tags:adminDash>
